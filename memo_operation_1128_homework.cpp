@@ -1,27 +1,28 @@
 #include <iostream>
+#include <cstring>
+
 using namespace std;
 
 int main()
 {
-   string A = "Hello,World.";
-	cout << "the starting locstion of A is " << &A; 
+	char* str = NULL;
+	str = (char*)malloc(sizeof(char*)*14);
+	strncpy(str, "Hello,World.", 13);
+	printf("Address of First Character is %p", str);
 	
-	int len = A.length(); 
-	A.erase(len-1);
-	string B = "!";
-	int len2 = A.length(); 
-	A.insert(len2, B);
-	cout << "the new A is " << A; 
 	
-	char C[13] = "Hello,World!";
-	char* D = C;
-	std::allocator<char> alloc;
-	char* buffer = alloc.allocate(1024);
+	*(str+11) = '!';
 	
-	buffer[0] = C[0];
-	int i = 9;
-	while(*D){
-		buffer[i] = *(D++);
+	char* big_str = NULL;
+	big_str = (char*)malloc(sizeof(char*)*1024);
+	char* p = str;
+	char* big_p = big_str+9;
+	while(*p){
+		*(big_p++) = *(p++);
 	}
+	
+	free(str);
+	free(big_str);
+	
    return 0;
 }

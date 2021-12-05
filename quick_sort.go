@@ -4,8 +4,8 @@ import "fmt"
 
 func main() {
    fmt.Println("Hello, World!")
-	var array =[]int{4,2,3,7,6,0,1,5}
-	quick_sort(array, 0, 7)
+	var array =[]int{56,99,-35,0,8}
+	quick_sort(array, 0, len(array)-1)
 	fmt.Println(array)
 }
 
